@@ -1,0 +1,21 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Employee extends Model
+{
+    public function wasEmployeeChosenBefore($weeksBefore = 16)
+    {
+        $historyList = CleanHistory::take($weeksBefore)->get();
+
+        foreach ($historyList as $history) {
+            if ($history->people->contains($this->id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
