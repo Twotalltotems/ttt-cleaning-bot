@@ -4,7 +4,7 @@
 
 ### Using [Laravel](http://www.laravel.com).
 
-### Made with love ❤.
+### Made with love ❤
 
 * [Felipe Peña](mailto:felipe.pena@twotalltotems.com)
 * [Two Tall Totems](https://www.twotalltotems.com)
