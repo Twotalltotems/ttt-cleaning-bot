@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Cleaner;
 use App\CleanHistory;
 use App\Employee;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -26,6 +27,8 @@ class CleanerTest extends TestCase
     /** @test */
     public function a_cleaner_can_generate_cleaners()
     {
+        Notification::fake();
+
         create(Employee::class, [], 2);
 
         Cleaner::chooseCleaners();
