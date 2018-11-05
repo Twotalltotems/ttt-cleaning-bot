@@ -2,11 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Employee;
-use App\Notify;
-use App\Notifications\TheChosenOnes;
+use App\Cleaner;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
 
 class ChooseWinners extends Command
 {
@@ -41,17 +38,6 @@ class ChooseWinners extends Command
      */
     public function handle()
     {
-        $employees = Employee::inRandomOrder()->limit(2)->get();
-
-        if ($employees->count() < 2) {
-            return;
-        }
-
-        while($employees->values()->get(0)->wasEmployeeChosenBefore() ||
-            $employees->values()->get(1)->wasEmployeeChosenBefore()) {
-            $employees = Employee::inRandomOrder()->limit(2)->get();
-        }
-
-        (new Notify())->notify(new TheChosenOnes($employees->values()->get(0), $employees->values()->get(1)));
+        Cleaner::chooseCleaners();
     }
 }

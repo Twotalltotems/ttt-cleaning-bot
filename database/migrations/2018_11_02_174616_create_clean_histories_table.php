@@ -15,8 +15,8 @@ class CreateCleanHistoriesTable extends Migration
     {
         Schema::create('clean_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('start_period');
-            $table->date('end_period');
+            $table->dateTime('start_period');
+            $table->dateTime('end_period');
             $table->timestamps();
         });
     }

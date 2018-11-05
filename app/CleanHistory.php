@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class CleanHistory extends Model
 {
+    protected $fillable = [
+        'start_period',
+        'end_period',
+    ];
+
     /**
      * People notes property.
      *
