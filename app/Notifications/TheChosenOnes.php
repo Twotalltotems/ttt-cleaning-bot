@@ -71,7 +71,7 @@ class TheChosenOnes extends Notification
     {
         return (new SlackMessage)
             ->from('TTT Ghost', ':ghost:')
-            ->to('#test-cleaning')
+            ->to('#general')
             ->content('Our cleaners this week are: ' . $this->employee1->name . ' and ' . $this->employee2->name . '!');
     }
 
