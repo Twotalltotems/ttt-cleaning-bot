@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" href="{{ url('css/app.css') }}">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -49,6 +51,14 @@
                 <div class="title m-b-md">
                     TTT Cleaning Bot
                 </div>
+                @if ($history)
+                    <h4>Cleaners this week are:</h4>
+                    <ul class="list-reset">
+                        @foreach($history->people as $person)
+                            <li>{{ $person->name }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
     </body>
