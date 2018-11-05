@@ -11,7 +11,7 @@ class Employee extends Model
         'email'
     ];
 
-    public function wasEmployeeChosenBefore($weeksBefore = 16)
+    public function wasEmployeeChosenBefore($weeksBefore = 12)
     {
         $historyList = CleanHistory::take($weeksBefore)->get();
 

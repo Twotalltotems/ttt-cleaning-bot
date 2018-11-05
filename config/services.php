@@ -40,4 +40,8 @@ return [
         ],
     ],
 
+    'slack'     => [
+        'webhook' => env('SLACK_WEBHOOK_URL'),
+    ],
+
 ];
