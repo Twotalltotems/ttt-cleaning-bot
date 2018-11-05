@@ -33,5 +33,7 @@ class CleanerTest extends TestCase
         $history = CleanHistory::all();
 
         $this->assertTrue($history->count() > 0);
+
+        $this->assertTrue($history->first()->people->count() == 2);
     }
 }

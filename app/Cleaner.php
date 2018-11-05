@@ -23,11 +23,17 @@ class Cleaner {
             $employees = Employee::inRandomOrder()->limit(2)->get();
         }
 
-        CleanHistory::create([
+        $employee1 = $employees->values()->get(0);
+        $employee2 = $employees->values()->get(1);
+
+        $history = CleanHistory::create([
             'start_period' => Carbon::now()->startOfWeek()->addDay(),
             'end_period' => Carbon::now()->startOfWeek()->addDay(5)
         ]);
 
-        (new Notify())->notify(new TheChosenOnes($employees->values()->get(0), $employees->values()->get(1)));
+        $history->people()->attach($employee1);
+        $history->people()->attach($employee2);
+
+        (new Notify())->notify(new TheChosenOnes($employee1, $employee2));
     }
 }
