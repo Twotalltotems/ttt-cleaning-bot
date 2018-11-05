@@ -2,10 +2,10 @@
 
 ## Small bot which will choose kitchen cleaners each week. 
 
-###Using [Laravel](http://www.laravel.com).
+### Using [Laravel](http://www.laravel.com).
 
-###Made with love ❤.
+### Made with love ❤.
 
-* [Felipe Peña](felipe.pena@twotalltotems.com)
+* [Felipe Peña](mailto:felipe.pena@twotalltotems.com)
 * [Two Tall Totems](https://www.twotalltotems.com)
 
