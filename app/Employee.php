@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\ActiveScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
@@ -10,6 +11,18 @@ class Employee extends Model
         'name',
         'email'
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ActiveScope);
+    }
 
     public function wasEmployeeChosenBefore($weeksBefore = 12)
     {

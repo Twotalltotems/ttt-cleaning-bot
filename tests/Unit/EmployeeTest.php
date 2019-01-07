@@ -9,6 +9,7 @@
 namespace Tests\Unit;
 
 use App\CleanHistory;
+use App\Employee;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
@@ -23,6 +24,24 @@ class EmployeeTest extends TestCase
     {
         parent::setUp();
         $this->employee = create('App\Employee');
+    }
+
+    /** @test */
+    public function employee_model_has_a_scope()
+    {
+        $this->assertEquals(1, Employee::all()->count());
+
+        $employee2 = create('App\Employee', [
+            'active' => 0
+        ]);
+
+        $this->assertEquals(1, Employee::all()->count());
+
+        $employee3 = create('App\Employee', [
+            'active' => 1
+        ]);
+
+        $this->assertEquals(2, Employee::all()->count());
     }
 
     /** @test */
