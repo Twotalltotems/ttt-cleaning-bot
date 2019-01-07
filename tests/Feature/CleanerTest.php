@@ -29,6 +29,10 @@ class CleanerTest extends TestCase
     {
         Notification::fake();
 
+        $history = CleanHistory::all();
+
+        $this->assertTrue($history->count() == 0);
+
         create(Employee::class, [], 2);
 
         Cleaner::chooseCleaners();
@@ -38,5 +42,22 @@ class CleanerTest extends TestCase
         $this->assertTrue($history->count() > 0);
 
         $this->assertTrue($history->first()->people->count() == 2);
+    }
+
+    /** @test */
+    public function a_cleaner_will_generate_cleaners_with_proper_employees()
+    {
+        Notification::fake();
+
+        $employee1 = create(Employee::class, ['active' => 1]);
+        $employee2 = create(Employee::class, ['active' => 1]);
+        $employee3 = create(Employee::class, ['active' => 0]);
+
+        Cleaner::chooseCleaners();
+
+        $history = CleanHistory::all();
+
+        $firstPeople = $history->first()->people->first();
+        $this->assertTrue($firstPeople->email == $employee1->email || $firstPeople->email == $employee2->email);
     }
 }
