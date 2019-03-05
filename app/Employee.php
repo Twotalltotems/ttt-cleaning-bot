@@ -26,7 +26,8 @@ class Employee extends Model
 
     public function wasEmployeeChosenBefore($weeksBefore = 12)
     {
-        $historyList = CleanHistory::take($weeksBefore)->get();
+        $historyList = CleanHistory::orderBy('id', 'desc')
+        ->take($weeksBefore)->get();
 
         foreach ($historyList as $history) {
             if ($history->people->contains($this->id)) {
