@@ -2,7 +2,7 @@
 
 ## Small bot which will choose kitchen cleaners each week. 
 
-###Setup
+### Setup
 
 1. Install `composer` globally, then run `composer install` to install all dependencies.
 1. Copy `.env.example` into `.env`.
